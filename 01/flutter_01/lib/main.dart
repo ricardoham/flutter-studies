@@ -1,17 +1,35 @@
 import 'package:flutter/material.dart';
 
+import './question.dart';
+import './answer.dart';
+
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var questionIndex = 0;
 
   void onAnswer() {
+    setState(() {
+      questionIndex = questionIndex + 1;
+    });
     print("BUtton pressed");
   }
 
   @override
   Widget build(BuildContext context) {
+    var questions = [
+      'Fav Color',
+      'Fav name'
+    ];
+
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
@@ -19,19 +37,8 @@ class MyApp extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          Text('The question'),
-          RaisedButton(
-            child: Text('Answer 1'),
-            onPressed: onAnswer,
-          ),
-          RaisedButton(
-            child: Text('Answer 2'),
-            onPressed: onAnswer,
-          ),
-          RaisedButton(
-            child: Text('Answer 3'),
-            onPressed: onAnswer
-          )
+          Question(questions[questionIndex]),
+          Answer(onAnswer),
         ],
       ),
     ));
