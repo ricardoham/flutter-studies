@@ -8,7 +8,6 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -26,8 +25,18 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var questions = [
-      'Fav Color',
-      'Fav name'
+      {
+        'questionText': 'Fav Color?',
+        'answers': ['black', 'white', 'green', 'red']
+      },
+      {
+        'questionText': 'Fav name?',
+        'answers': ['Lisa', 'Typhany', 'Louis', 'Natasha']
+      },
+      {
+        'questionText': 'Fav car?',
+        'answers': ['Ferrari', 'Mustang', 'Camaro', 'Fusca']
+      },
     ];
 
     return MaterialApp(
@@ -36,9 +45,10 @@ class _MyAppState extends State<MyApp> {
         title: Text('My First App'),
       ),
       body: Column(
-        children: <Widget>[
-          Question(questions[questionIndex]),
-          Answer(onAnswer),
+        children: [
+          Question(questions[questionIndex]['questionText']),
+          ...(questions[questionIndex]['answers'] as List<String>)
+              .map((e) => Answer(onAnswer, e)).toList(),
         ],
       ),
     ));
