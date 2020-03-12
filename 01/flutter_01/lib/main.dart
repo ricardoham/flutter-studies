@@ -43,9 +43,11 @@ class _MyAppState extends State<MyApp> {
     },
   ];
   var _questionIndex = 0;
+  var _totalScore = 0;
 
-  void _onAnswer() {
-    if (_questionIndex < _questions.length) {}
+  void _onAnswer(int score) {
+    // if (_questionIndex < _questions.length) {}
+    _totalScore += score;
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
