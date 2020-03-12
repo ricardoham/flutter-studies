@@ -16,16 +16,30 @@ class _MyAppState extends State<MyApp> {
   final _questions = const [
     {
       'questionText': 'Fav Color?',
-      'answers': [{ 'text':'black', 'score': 10 }, {'text': 'white', 'score': 5 }, 
-      {'text':'green', 'score': 20 }, {'text': 'red', 'score': 30}]
+      'answers': [
+        {'text': 'black', 'score': 10},
+        {'text': 'white', 'score': 5},
+        {'text': 'green', 'score': 20},
+        {'text': 'red', 'score': 30}
+      ]
     },
     {
       'questionText': 'Fav name?',
-      'answers': ['Lisa', 'Typhany', 'Louis', 'Natasha']
+      'answers': [
+        {'text': 'Lisa', 'score': 20},
+        {'text': 'Typhany', 'score': 23},
+        {'text': 'Louis', 'score': 32},
+        {'text': 'Natasha', 'score': 30}
+      ]
     },
     {
       'questionText': 'Fav car?',
-      'answers': ['Ferrari', 'Mustang', 'Camaro', 'Fusca']
+      'answers': [
+        {'text': 'Ferrari', 'score': 33},
+        {'text': 'Mustang', 'score': 43},
+        {'text': 'Camaro', 'score': 25},
+        {'text': 'Fusca', 'score': 100}
+      ]
     },
   ];
   var _questionIndex = 0;
@@ -46,7 +60,11 @@ class _MyAppState extends State<MyApp> {
         title: Text('My First App'),
       ),
       body: _questionIndex < _questions.length
-          ? Quiz(onAnswer: _onAnswer, questions: _questions, questionIndex: _questionIndex,)
+          ? Quiz(
+              onAnswer: _onAnswer,
+              questions: _questions,
+              questionIndex: _questionIndex,
+            )
           : Result(),
     ));
   }
