@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import './question.dart';
-import './answer.dart';
+import './quiz.dart';
+import './result.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,44 +13,41 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+  final _questions = const [
+    {
+      'questionText': 'Fav Color?',
+      'answers': [{ 'text':'black', 'score': 10 }, {'text': 'white', 'score': 5 }, 
+      {'text':'green', 'score': 20 }, {'text': 'red', 'score': 30}]
+    },
+    {
+      'questionText': 'Fav name?',
+      'answers': ['Lisa', 'Typhany', 'Louis', 'Natasha']
+    },
+    {
+      'questionText': 'Fav car?',
+      'answers': ['Ferrari', 'Mustang', 'Camaro', 'Fusca']
+    },
+  ];
+  var _questionIndex = 0;
 
-  void onAnswer() {
+  void _onAnswer() {
+    if (_questionIndex < _questions.length) {}
     setState(() {
-      questionIndex = questionIndex + 1;
+      _questionIndex = _questionIndex + 1;
     });
     print("BUtton pressed");
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      {
-        'questionText': 'Fav Color?',
-        'answers': ['black', 'white', 'green', 'red']
-      },
-      {
-        'questionText': 'Fav name?',
-        'answers': ['Lisa', 'Typhany', 'Louis', 'Natasha']
-      },
-      {
-        'questionText': 'Fav car?',
-        'answers': ['Ferrari', 'Mustang', 'Camaro', 'Fusca']
-      },
-    ];
-
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
         title: Text('My First App'),
       ),
-      body: Column(
-        children: [
-          Question(questions[questionIndex]['questionText']),
-          ...(questions[questionIndex]['answers'] as List<String>)
-              .map((e) => Answer(onAnswer, e)).toList(),
-        ],
-      ),
+      body: _questionIndex < _questions.length
+          ? Quiz(onAnswer: _onAnswer, questions: _questions, questionIndex: _questionIndex,)
+          : Result(),
     ));
   }
 }
