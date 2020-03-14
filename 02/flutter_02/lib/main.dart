@@ -72,7 +72,7 @@ class MyHomePage extends StatelessWidget {
                         ),
                         Text(
                           el.date.toString(),
-                          style: TextStyle(color: Colors.grey),
+                          style: TextStyle(color: Colors.grey[200]),
                         ),
                       ],
                     )
