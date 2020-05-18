@@ -43,7 +43,7 @@ class Products with ChangeNotifier {
   //Geter
   List<Product> get items {
     //doing a copy
-    return [..._items];
+    // return [..._items];
   }
 
   Product findById(String id) {
