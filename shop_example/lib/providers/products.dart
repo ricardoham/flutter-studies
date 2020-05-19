@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 import './product.dart';
 
-// inherited widget
 class Products with ChangeNotifier {
-  // not final because change over time
   List<Product> _items = [
     Product(
       id: 'p1',
@@ -40,9 +38,7 @@ class Products with ChangeNotifier {
     ),
   ];
 
-  //Geter
   List<Product> get items {
-    //doing a copy
     return [..._items];
   }
 
@@ -52,8 +48,6 @@ class Products with ChangeNotifier {
 
   void addProduct() {
     // _items.add(value);
-
-    // comes from ChangeNotifier
     notifyListeners();
   }
 }
