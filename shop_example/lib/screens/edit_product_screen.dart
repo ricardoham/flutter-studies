@@ -103,7 +103,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.save),
-            onPressed: (_saveForm),
+            onPressed: _saveForm,
           )
         ],
       ),
